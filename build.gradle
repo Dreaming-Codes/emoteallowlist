@@ -23,11 +23,21 @@ loom {
 
 repositories {
     maven {
-        name = "KosmX's repo"
-        url = "https://maven.kosmx.dev"
+        url = "https://maven.wispforest.io/releases/"
     }
     maven {
-        url = "https://maven.wispforest.io/releases/"
+        url = "https://maven.kosmx.dev/"
+    }
+    exclusiveContent {
+        forRepository {
+            maven {
+                name = "Modrinth"
+                url = "https://api.modrinth.com/maven"
+            }
+        }
+        filter {
+            includeGroup "maven.modrinth"
+        }
     }
 }
 
@@ -40,7 +50,9 @@ dependencies {
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
-    implementation("io.github.kosmx.emotes:emotesAPI:${project.property("emotes_api_version")}")
+    modImplementation("maven.modrinth:emotecraft:${project.property("emotecraft_versionid")}")
+
+    implementation("dev.kosmx.player-anim:anim-core:1.0.2")
 
     annotationProcessor(modImplementation("io.wispforest:owo-lib:${project.property("owo_version")}"))
     include("io.wispforest:owo-sentinel:${project.property("owo_version")}")

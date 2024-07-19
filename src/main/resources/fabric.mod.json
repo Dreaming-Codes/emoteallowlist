@@ -14,9 +14,15 @@
       "codes.dreaming.emoteallowlist.Emoteallowlist"
     ]
   },
+  "mixins": [
+    {
+      "config": "mixins.emoteallowlist.json"
+    }
+  ],
   "depends": {
     "fabricloader": ">=${loader_version}",
     "fabric": "*",
-    "minecraft": "${minecraft_version}"
+    "minecraft": "${minecraft_version}",
+    "emotecraft": "*"
   }
 }
